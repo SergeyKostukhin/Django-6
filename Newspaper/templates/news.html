@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+{% load my_filters %}
+
+{% block title %}
+Новости
+{% endblock title %}
+
+{% block content %}
+<h1> Все новости ({{news|length}}) </h1>
+
+
+<ul>
+    {% for n in news reversed %}
+    <li> <h5>{{ n.header|censor }} - {{ n.date|date:'d.M.Y' }} </h5> {{ n.text|truncatewords:20|censor }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
